@@ -1,9 +1,13 @@
+<style media="all">
+h1 {display: inline;}
+</style>
+
 <p align="center">
   <img src="https://i.imgur.com/QsN5xYv.png" width="200px"/>
 </p>
 
 
-<h1 align="center" display: "inline"> Juliet (Alpha) </h1>
+<h1 align="center" > Juliet (Alpha) </h1>
 <p align="center"> A simple logging framework for iOS </p>
 
 
