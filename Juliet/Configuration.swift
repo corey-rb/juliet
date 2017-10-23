@@ -33,7 +33,9 @@ public protocol Configurable {
 }
 
 public struct Configuration : Configurable {
-    
+	
+	public static let defaultConfiguation: Configuration = Configuration()
+	
     public var levels : [LogLevel]
     
     public var exportFormat : ExportFormat

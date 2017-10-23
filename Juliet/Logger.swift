@@ -23,7 +23,9 @@
 import Foundation
 
 open class Logger {
-    
+	
+	static let shared: Logger = Logger(configuration: Configuration.defaultConfiguation)
+	
     open var enabled : Bool = true
     
     open var configuration : Configurable
