@@ -3,7 +3,7 @@
 </p>
 
 
-<h1 style="display:inline; text-align:center;" > Juliet (Alpha) </h1>
+<p style="font-size: 2em; font-weight: bold;" align="center" > Juliet (Alpha) </p>
 <p align="center"> A simple logging framework for iOS </p>
 
 
