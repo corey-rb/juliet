@@ -85,8 +85,6 @@ extension LogLevel : CustomStringConvertible {
             return "Error"
         case .fatal:
             return "Fatal"
-        default:
-            return "NA"
         }
     }
 }

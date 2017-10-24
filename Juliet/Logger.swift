@@ -42,8 +42,6 @@ open class Logger {
             self.composer = ConsoleComposer()
         case .http:
             self.composer = HttpComposer()
-        default:
-            self.composer = ConsoleComposer()
         }
     }
     
@@ -81,8 +79,6 @@ open class Logger {
                 return
             }
             self.composer.log(logMessage: message)
-        default:
-            self.composer.log(logMessage: "No level supplied: \(message)")
         }
     }
     
