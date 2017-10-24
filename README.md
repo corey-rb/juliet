@@ -12,8 +12,7 @@
 
 
 
-Juliet is a simple, expandable logging library for iOS.  
-It is meant to allow easy logging of application data to any endpoint (stdout, http, etc).
+Juliet is a simple, expandable logging library for iOS. It is meant to allow easy logging of application data to any endpoint (stdout, http, etc).
 
 - [Features](#features)
 - [Requirements](#requirements)
