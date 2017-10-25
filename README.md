@@ -16,6 +16,7 @@ Juliet is a simple, expandable logging library for iOS. It is meant to allow eas
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Output](#output)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -55,14 +56,27 @@ Coming Soon.
 
 ## Usage
 
-### Basic Logging
-Add import declaration
+### Configure a Destination
 ```swift
- import Juliet
+import Juliet
 
- Logger.shared.log(level : .alert, message : "Basic Alert")
+let consoleDestination = ConsoleOutput()
+Logger.add(destination: consoleDestination)
 ```
 
+### Basic Logging
+```swift
+import Juliet
+
+Logger.verbose("View Loaded")
+Logger.info(Date())
+Logger.debug(["Yellow", "Blue", 3])
+Logger.warning("Yikes something is not right")
+Logger.error("Fatal Error")
+```
+
+## Output
+![Image](https://imgur.com/0orGsD3.png)
 
 ## Contribute
 Want to learn Swift and help contribute? [Read Here](https://github.com/corey-rb/juliet/blob/master/CONTRIBUTING.md)

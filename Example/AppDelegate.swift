@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let consoleDestination = ConsoleOutput()
 		consoleDestination.timeZone = TimeZone(abbreviation: "PST")
 		Logger.add(destination: consoleDestination)
-		Logger.verbose("Did Intialize Logger")
 		
 		return true
 	}
