@@ -1,6 +1,6 @@
 //MIT License
 //
-//Copyright (c) 2017 Corey Schaf @ Rogue Bit Studios (roguebit.io)
+//Copyright (c) 2017 Rudy Bermudez
 //
 //Permission is hereby granted, free of charge, to any person obtaining a copy
 //of this software and associated documentation files (the "Software"), to deal
@@ -24,66 +24,81 @@ import Foundation
 
 open class Logger {
 	
-	static let shared: Logger = Logger(configuration: Configuration.defaultConfiguation)
+	private static var destinations = Set<BaseOutput>()
 	
     open var enabled : Bool = true
-    
-    open var configuration : Configurable
-    
-    var router : Router
-    
-    private var composer : OutputComposer
-    
-    public init(configuration : Configurable) {
-        self.configuration = configuration
-        self.router = Router()
-        switch configuration.composerType {
-        case .console:
-            self.composer = ConsoleComposer()
-        case .http:
-            self.composer = HttpComposer()
-        default:
-            self.composer = ConsoleComposer()
-        }
-    }
-    
-    // this would print out each level
-    // to its corresponding router
-    public func log(level : LogLevel, message : String) {
-        
-        guard self.enabled else {
-            return
-        }
-        
-        switch level {
-        case .noerror:
-            guard self.configuration.levels.contains(.noerror) else {
-                return
-            }
-            self.composer.log(logMessage: message)
-        case .alert:
-            guard self.configuration.levels.contains(.alert) else {
-                return
-            }
-            self.composer.log(logMessage: message)
-        case .warning:
-            guard self.configuration.levels.contains(.warning) else {
-                return
-            }
-            self.composer.logWarning(logMessage: message)
-        case .error:
-            guard self.configuration.levels.contains(.error) else {
-                return
-            }
-            self.composer.log(logMessage: message)
-        case .fatal:
-            guard self.configuration.levels.contains(.fatal) else {
-                return
-            }
-            self.composer.log(logMessage: message)
-        default:
-            self.composer.log(logMessage: "No level supplied: \(message)")
-        }
-    }
+	
+	@discardableResult
+	public class func add(destination: BaseOutput) -> Bool {
+		if destinations.contains(destination) {
+			return false
+		} else {
+			destinations.insert(destination)
+			return true
+		}
+	}
+	
+	@discardableResult
+	public class func remove(destination: BaseOutput) -> Bool {
+		if destinations.contains(destination) {
+			destinations.remove(destination)
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	open class func removeAllDestinations() {
+		destinations.removeAll()
+	}
+	
+	open class func countDestinations() -> Int {
+		return destinations.count
+	}
+	
+	public class func verbose(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
+		log(.verbose, function: function, file: file, line: line, message: message)
+	}
+	
+	public class func debug(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
+		log(.debug, function: function, file: file, line: line, message: message)
+	}
+	
+	public class func info(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
+		log(.info, function: function, file: file, line: line, message: message)
+	}
+	
+	public class func warning(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
+		log(.warning, function: function, file: file, line: line, message: message)
+	}
+	
+	public class func error(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
+		log(.error, function: function, file: file, line: line, message: message)
+	}
+	
+	fileprivate class func log(_ level: LogLevel, function: String = #function, file: String = #file, line: Int = #line, message: @autoclosure () -> Any) {
+		
+		for dest in destinations {
+			
+			guard let queue = dest.queue else {
+				continue
+			}
+			
+			if dest.shouldLevelBeLogged(level) {
+				let message = "\(message())"
+				if dest.asynchronously {
+					queue.async {
+						_ = dest.acceptLog(level, function: function, file: file, line: line, message: message)
+					}
+				} else {
+					queue.sync {
+						_ = dest.acceptLog(level, function: function, file: file, line: line, message: message)
+					}
+				}
+				
+			}
+		}
+	}
+	
     
 }
