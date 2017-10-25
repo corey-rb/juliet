@@ -24,10 +24,16 @@ import Foundation
 
 open class Logger {
 	
+	/// The Set of destinations to output the log
 	private static var destinations = Set<BaseOutput>()
 	
+	/// Enables the logger
     open var enabled : Bool = true
 	
+	/// Add an output destination to the logger
+	///
+	/// - Parameter destination: The OutputDestination to add to the logger
+	/// - Returns: Bool denoting success
 	@discardableResult
 	public class func add(destination: BaseOutput) -> Bool {
 		if destinations.contains(destination) {
@@ -38,6 +44,10 @@ open class Logger {
 		}
 	}
 	
+	/// Remove an output destination from the logger
+	///
+	/// - Parameter destination: The OutputDestination to remove from the logger
+	/// - Returns: Bool denoting success
 	@discardableResult
 	public class func remove(destination: BaseOutput) -> Bool {
 		if destinations.contains(destination) {
@@ -48,44 +58,100 @@ open class Logger {
 		}
 	}
 	
+	/// Allow the user to remove all destinations and start over
 	open class func removeAllDestinations() {
 		destinations.removeAll()
 	}
 	
+	/// Returns the amount of open destinations
 	open class func countDestinations() -> Int {
 		return destinations.count
 	}
 	
-	public class func verbose(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
-		log(.verbose, function: function, file: file, line: line, message: message)
+	/// Log unimportant information (Lowest Priority)
+	/// - Precondition: At least 1 destination must be configured to Logger
+	///
+	/// - Parameters:
+	///   - message: The log message to display
+	///   - file: The file where log was called
+	///   - function: The function where log was called
+	///   - line: The line number where log was called
+	public class func verbose(_ message: @autoclosure () -> Any, file: String = #file, function: String = #function, line: Int = #line) {
+		dispatch_log(.verbose, file: file, function: function, line: line, message: message)
 	}
 	
-	public class func debug(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
-		log(.debug, function: function, file: file, line: line, message: message)
+	/// Log something that will help with debugging (Low Priority)
+	/// - Precondition: At least 1 destination must be configured to Logger
+	///
+	/// - Parameters:
+	///   - message: The log message to display
+	///   - file: The file where log was called
+	///   - function: The function where log was called
+	///   - line: The line number where log was called
+	public class func debug(_ message: @autoclosure () -> Any, file: String = #file, function: String = #function, line: Int = #line) {
+		dispatch_log(.debug, file: file, function: function, line: line, message: message)
 	}
 	
-	public class func info(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
-		log(.info, function: function, file: file, line: line, message: message)
+	/// Log something that is not an issue or error (Regular Priority)
+	/// - Precondition: At least 1 destination must be configured to Logger
+	///
+	/// - Parameters:
+	///   - message: The log message to display
+	///   - file: The file where log was called
+	///   - function: The function where log was called
+	///   - line: The line number where log was called
+	public class func info(_ message: @autoclosure () -> Any, file: String = #file, function: String = #function, line: Int = #line) {
+		dispatch_log(.info, file: file, function: function, line: line, message: message)
 	}
 	
-	public class func warning(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
-		log(.warning, function: function, file: file, line: line, message: message)
+	/// Log something that may lead to an error (High Priority)
+	/// - Precondition: At least 1 destination must be configured to Logger
+	///
+	/// - Parameters:
+	///   - message: The log message to display
+	///   - file: The file where log was called
+	///   - function: The function where log was called
+	///   - line: The line number where log was called
+	public class func warning(_ message: @autoclosure () -> Any, file: String = #file, function: String = #function, line: Int = #line) {
+		dispatch_log(.warning, file: file, function: function, line: line, message: message)
 	}
 	
-	public class func error(_ message: @autoclosure () -> Any, function: String = #function, file: String = #file, line: Int = #line) {
-		log(.error, function: function, file: file, line: line, message: message)
+	/// Log an error. This is something that is fatal. (Highest Priority)
+	/// - Precondition: At least 1 destination must be configured to Logger
+	///
+	/// - Parameters:
+	///   - message: The log message to display
+	///   - file: The file where log was called
+	///   - function: The function where log was called
+	///   - line: The line number where log was called
+	public class func error(_ message: @autoclosure () -> Any, file: String = #file, function: String = #function, line: Int = #line) {
+		dispatch_log(.error, file: file, function: function, line: line, message: message)
 	}
 	
-	fileprivate class func log(_ level: LogLevel, function: String = #function, file: String = #file, line: Int = #line, message: @autoclosure () -> Any) {
+	/// Dispatch log to Destination if the destination minLevel permits it
+	/// - Precondition: At least 1 destination must be configured to Logger
+	///
+	/// - Parameters:
+	///   - level: The `LogLevel` of the log
+	///   - message: The log message to display
+	///   - file: The file where log was called
+	///   - function: The function where log was called
+	///   - line: The line number where log was called
+	fileprivate class func dispatch_log(_ level: LogLevel, file: String = #file, function: String = #function, line: Int = #line, message: @autoclosure () -> Any) {
 		
+		// Iterate through all destinations
 		for dest in destinations {
 			
 			guard let queue = dest.queue else {
 				continue
 			}
 			
+			// Check to see if destination will accept the log level
 			if dest.shouldLevelBeLogged(level) {
+				
 				let message = "\(message())"
+				
+				// Check to see if the destination is configured asynchronously or synchronously
 				if dest.asynchronously {
 					queue.async {
 						_ = dest.acceptLog(level, function: function, file: file, line: line, message: message)

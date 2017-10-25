@@ -8,8 +8,9 @@
 
 import Foundation
 
+/// Log Level used in Juliet Logger
 public enum LogLevel: Int, CustomStringConvertible {
-	
+	// Int defines Log Level Precedence
 	case all = 0
 	case verbose = 1
 	case debug = 2
@@ -18,6 +19,7 @@ public enum LogLevel: Int, CustomStringConvertible {
 	case error = 5
 	case none = 6
 	
+	/// Description of Log Level
 	public var description: String {
 		switch self {
 		case .verbose:
@@ -36,6 +38,7 @@ public enum LogLevel: Int, CustomStringConvertible {
 		}
 	}
 	
+	/// Emoji Log Level Indicator
 	public var emoji : String {
 		switch self {
 		case .verbose:
@@ -55,8 +58,8 @@ public enum LogLevel: Int, CustomStringConvertible {
 	}
 	
 	/// Default log level
-	/// Be sure to set the "DEBUG" symbol.
-	/// Set it in the "Swift Compiler - Custom Flags" section, "Other Swift Flags" line. Add "-D DEBUG" entry.
+	/// `LogLevel.all` if in Debug
+	/// `LogLevel.warning` if in Production
 	#if DEBUG
 	static public let defaultLevel = LogLevel.all
 	#else

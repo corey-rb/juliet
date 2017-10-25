@@ -10,43 +10,67 @@ import Foundation
 
 open class BaseOutput: Hashable {
 	
+	// MARK: - Output Format Configuration
+	
+	/// Show the date and time in the log output
 	public var showDateTime = true
+	
+	/// Configure the DateFormat
 	public var dateFormat = "HH:mm:ss.SSS"
 	
+	/// Configure the timezone for the DateFormat
 	public var timeZone: TimeZone? = TimeZone(abbreviation: "UTC")
 
+	/// Displays the textual representation of the log level in the log output
+	///
+	/// Ex. `Warning`
 	public var showLogLevel = true
 	
-	public var showFileName = true
-	
-	public var showLineNumber = true
-	
-	public var showFunctionName = true
-	
+	/// Displays the Log Level Emoji Indicator in the log output
+	///
+	/// Ex. ⚠️
 	public var showLogLevelEmoji = true
 	
-	public var minLevel = LogLevel.verbose
+	/// Display the file name in the log output
+	public var showFileName = true
 	
-	/// runs in own serial background thread for better performance
+	/// Display the line number in the log output
+	public var showLineNumber = true
+	
+	/// Display the function name in the log output
+	public var showFunctionName = true
+	
+	/// Denotes the minimum logging level
+	public var minLevel = LogLevel.defaultLevel
+	
+	/// Executes logger on `Juliet` serial background thread for better performance
 	open var asynchronously = true
 	
+	/// The queue of the Output Destination
 	var queue: DispatchQueue?
 	
+	
+	// MARK: - Base Methods
 	public init() {
 		let uuid = NSUUID().uuidString
 		let queueLabel = "Juliet-queue-" + uuid
 		queue = DispatchQueue(label: queueLabel, target: queue)
 	}
 	
-	let formatter = DateFormatter()
-	
-	
+	/// Accepts a log and formats the log data points
 	open func acceptLog(_ level: LogLevel, function: String, file: String, line: Int, message: String) -> String? {
-		return formatMessage(level, function: function, file: file, line: line, message: message)
+		return formatLogOutput(level, function: function, file: file, line: line, message: message)
 	}
 	
+	
+	
 	// MARK: - Formatting
-	private func formatMessage(_ level: LogLevel, function: String, file: String, line: Int, message: String) -> String {
+	
+	/// Formatter for date and text formatting
+	let formatter = DateFormatter()
+	
+	/// Formats the log output with the user configurable settings in `Output Format Configuration` section
+	private func formatLogOutput(_ level: LogLevel, function: String, file: String, line: Int, message: String) -> String {
 		var dateComponent = ""
 		var fileName = ""
 		var functionName = ""
@@ -80,6 +104,7 @@ open class BaseOutput: Hashable {
 		return "\(dateComponent) \(fileName)\(functionName)\(lineNumber) \(emoji) \(levelDescription): \(message)"
 	}
 	
+	/// Format Date with user defined `dateFormat`
 	func formatDate(_ dateFormat: String) -> String {
 		formatter.timeZone = timeZone
 		formatter.dateFormat = dateFormat
@@ -88,7 +113,7 @@ open class BaseOutput: Hashable {
 	}
 	
 	
-	/// returns the filename of a path
+	/// Return the filename of a path
 	private func fileNameOfFile(_ file: String) -> String {
 		let fileParts = file.components(separatedBy: "/")
 		if let lastPart = fileParts.last {
@@ -97,7 +122,7 @@ open class BaseOutput: Hashable {
 		return ""
 	}
 	
-	/// returns the filename of a path
+	/// Returns the filename of a path without the file type ending
 	private func fileNameOfFileWithoutFileType(_ file: String) -> String {
 		let fileParts = fileNameOfFile(file).components(separatedBy: ".")
 		if let firstPart = fileParts.first {
@@ -107,6 +132,8 @@ open class BaseOutput: Hashable {
 	}
 	
 	// MARK: - Helpers
+	
+	/// Returns whether the outputter should accept a log statement
 	func shouldLevelBeLogged(_ level: LogLevel) -> Bool {
 		if level.rawValue >= minLevel.rawValue {
 			return true
@@ -115,7 +142,7 @@ open class BaseOutput: Hashable {
 		}
 	}
 	
-	// MARK : - Hashable and Equitable
+	// MARK: - Hashable and Equitable
 	lazy public var hashValue: Int = self.defaultHashValue
 	open var defaultHashValue: Int {return 0}
 	

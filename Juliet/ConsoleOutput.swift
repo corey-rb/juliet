@@ -10,6 +10,7 @@ import Foundation
 
 public class ConsoleOutput: BaseOutput {
 	
+	/// Use NSLog instead of print
 	public var useNSLog = false
 	
 	override public var defaultHashValue: Int { return 1 }
@@ -18,6 +19,7 @@ public class ConsoleOutput: BaseOutput {
 		super.init()
 	}
 	
+	/// Accepts the log and Outputs the details to the Console
 	override public func acceptLog(_ level: LogLevel, function: String, file: String, line: Int, message: String) -> String? {
 		let formattedString = super.acceptLog(level, function: function, file: file, line: line, message: message)
 		if let str = formattedString {
