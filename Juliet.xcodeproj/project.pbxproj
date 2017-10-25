@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473FE0361FA10C8E00534BB1 /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473FE0351FA10C8E00534BB1 /* ConsoleOutput.swift */; };
+		474267941FA03AA300D4C23A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474267931FA03AA300D4C23A /* AppDelegate.swift */; };
+		474267961FA03AA300D4C23A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474267951FA03AA300D4C23A /* ViewController.swift */; };
+		474267991FA03AA300D4C23A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 474267971FA03AA300D4C23A /* Main.storyboard */; };
+		4742679B1FA03AA300D4C23A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4742679A1FA03AA300D4C23A /* Assets.xcassets */; };
+		4742679E1FA03AA300D4C23A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4742679C1FA03AA300D4C23A /* LaunchScreen.storyboard */; };
+		474267A31FA0458900D4C23A /* Juliet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F8EE261E3FEB2000C7FCE0 /* Juliet.framework */; };
+		474267A41FA0458900D4C23A /* Juliet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1F8EE261E3FEB2000C7FCE0 /* Juliet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		474267A91FA0558000D4C23A /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474267A81FA0558000D4C23A /* LogLevel.swift */; };
+		474267AB1FA0579B00D4C23A /* BaseOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474267AA1FA0579B00D4C23A /* BaseOutput.swift */; };
 		597250A52DDED4AF1FDF7410 /* Pods_JulietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F4AF58257C7FACBB634D30 /* Pods_JulietTests.framework */; };
 		C155AF851E404083008D321A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C155AF841E404083008D321A /* Logger.swift */; };
-		C1AABA051F8EE8B400FFF36B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AABA041F8EE8B400FFF36B /* Configuration.swift */; };
 		C1AABA071F8EF4A600FFF36B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AABA061F8EF4A600FFF36B /* Router.swift */; };
-		C1AABA091F8EFFF200FFF36B /* Composer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AABA081F8EFFF200FFF36B /* Composer.swift */; };
 		C1F8EE301E3FEB2100C7FCE0 /* Juliet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F8EE261E3FEB2000C7FCE0 /* Juliet.framework */; };
 		C1F8EE351E3FEB2100C7FCE0 /* JulietSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F8EE341E3FEB2100C7FCE0 /* JulietSpecs.swift */; };
 		C1F8EE371E3FEB2100C7FCE0 /* Juliet.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F8EE291E3FEB2000C7FCE0 /* Juliet.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		474267A51FA0458900D4C23A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1F8EE1D1E3FEB2000C7FCE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1F8EE251E3FEB2000C7FCE0;
+			remoteInfo = Juliet;
+		};
 		C1F8EE311E3FEB2100C7FCE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C1F8EE1D1E3FEB2000C7FCE0 /* Project object */;
@@ -28,16 +43,38 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		474267A71FA0458900D4C23A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				474267A41FA0458900D4C23A /* Juliet.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1B49991879269D9918252BD3 /* Pods-JulietTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JulietTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JulietTests/Pods-JulietTests.debug.xcconfig"; sourceTree = "<group>"; };
 		41E577083218BA139EECE6A4 /* Pods-Juliet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Juliet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Juliet/Pods-Juliet.debug.xcconfig"; sourceTree = "<group>"; };
+		473FE0351FA10C8E00534BB1 /* ConsoleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleOutput.swift; sourceTree = "<group>"; };
+		474267911FA03AA300D4C23A /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		474267931FA03AA300D4C23A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		474267951FA03AA300D4C23A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		474267981FA03AA300D4C23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4742679A1FA03AA300D4C23A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4742679D1FA03AA300D4C23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4742679F1FA03AA300D4C23A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		474267A81FA0558000D4C23A /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		474267AA1FA0579B00D4C23A /* BaseOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOutput.swift; sourceTree = "<group>"; };
 		5226B4EE828D23BB74041048 /* Pods-JulietTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JulietTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JulietTests/Pods-JulietTests.release.xcconfig"; sourceTree = "<group>"; };
 		53F4AF58257C7FACBB634D30 /* Pods_JulietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JulietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8422C47AF643C5E703D56B8A /* Pods-Juliet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Juliet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Juliet/Pods-Juliet.release.xcconfig"; sourceTree = "<group>"; };
 		C155AF841E404083008D321A /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		C1AABA041F8EE8B400FFF36B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C1AABA061F8EF4A600FFF36B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		C1AABA081F8EFFF200FFF36B /* Composer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composer.swift; sourceTree = "<group>"; };
 		C1F8EE261E3FEB2000C7FCE0 /* Juliet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Juliet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F8EE291E3FEB2000C7FCE0 /* Juliet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Juliet.h; sourceTree = "<group>"; };
 		C1F8EE2A1E3FEB2000C7FCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +85,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4742678E1FA03AA300D4C23A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				474267A31FA0458900D4C23A /* Juliet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1F8EE221E3FEB2000C7FCE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,11 +124,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		474267921FA03AA300D4C23A /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				474267931FA03AA300D4C23A /* AppDelegate.swift */,
+				474267951FA03AA300D4C23A /* ViewController.swift */,
+				474267971FA03AA300D4C23A /* Main.storyboard */,
+				4742679A1FA03AA300D4C23A /* Assets.xcassets */,
+				4742679C1FA03AA300D4C23A /* LaunchScreen.storyboard */,
+				4742679F1FA03AA300D4C23A /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		C1F8EE1C1E3FEB2000C7FCE0 = {
 			isa = PBXGroup;
 			children = (
 				C1F8EE281E3FEB2000C7FCE0 /* Juliet */,
 				C1F8EE331E3FEB2100C7FCE0 /* JulietTests */,
+				474267921FA03AA300D4C23A /* Example */,
 				C1F8EE271E3FEB2000C7FCE0 /* Products */,
 				04B383113719E8E2588EE4CD /* Pods */,
 				E3DE69410E59ADEE1B167112 /* Frameworks */,
@@ -95,6 +154,7 @@
 			children = (
 				C1F8EE261E3FEB2000C7FCE0 /* Juliet.framework */,
 				C1F8EE2F1E3FEB2100C7FCE0 /* JulietTests.xctest */,
+				474267911FA03AA300D4C23A /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,9 +165,10 @@
 				C1F8EE291E3FEB2000C7FCE0 /* Juliet.h */,
 				C1F8EE2A1E3FEB2000C7FCE0 /* Info.plist */,
 				C155AF841E404083008D321A /* Logger.swift */,
-				C1AABA041F8EE8B400FFF36B /* Configuration.swift */,
 				C1AABA061F8EF4A600FFF36B /* Router.swift */,
-				C1AABA081F8EFFF200FFF36B /* Composer.swift */,
+				474267A81FA0558000D4C23A /* LogLevel.swift */,
+				474267AA1FA0579B00D4C23A /* BaseOutput.swift */,
+				473FE0351FA10C8E00534BB1 /* ConsoleOutput.swift */,
 			);
 			path = Juliet;
 			sourceTree = "<group>";
@@ -144,6 +205,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		474267901FA03AA300D4C23A /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 474267A21FA03AA300D4C23A /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				4742678D1FA03AA300D4C23A /* Sources */,
+				4742678E1FA03AA300D4C23A /* Frameworks */,
+				4742678F1FA03AA300D4C23A /* Resources */,
+				474267A71FA0458900D4C23A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				474267A61FA0458900D4C23A /* PBXTargetDependency */,
+			);
+			name = Example;
+			productName = Example;
+			productReference = 474267911FA03AA300D4C23A /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C1F8EE251E3FEB2000C7FCE0 /* Juliet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1F8EE3A1E3FEB2100C7FCE0 /* Build configuration list for PBXNativeTarget "Juliet" */;
@@ -191,12 +271,18 @@
 		C1F8EE1D1E3FEB2000C7FCE0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Rogue Bit Studios";
 				TargetAttributes = {
+					474267901FA03AA300D4C23A = {
+						CreatedOnToolsVersion = 9.0.1;
+						DevelopmentTeam = NZ8449Y9W6;
+						ProvisioningStyle = Automatic;
+					};
 					C1F8EE251E3FEB2000C7FCE0 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = NZ8449Y9W6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -212,6 +298,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C1F8EE1C1E3FEB2000C7FCE0;
 			productRefGroup = C1F8EE271E3FEB2000C7FCE0 /* Products */;
@@ -220,11 +307,22 @@
 			targets = (
 				C1F8EE251E3FEB2000C7FCE0 /* Juliet */,
 				C1F8EE2E1E3FEB2100C7FCE0 /* JulietTests */,
+				474267901FA03AA300D4C23A /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4742678F1FA03AA300D4C23A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4742679E1FA03AA300D4C23A /* LaunchScreen.storyboard in Resources */,
+				4742679B1FA03AA300D4C23A /* Assets.xcassets in Resources */,
+				474267991FA03AA300D4C23A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1F8EE241E3FEB2000C7FCE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,14 +429,24 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4742678D1FA03AA300D4C23A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				474267961FA03AA300D4C23A /* ViewController.swift in Sources */,
+				474267941FA03AA300D4C23A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1F8EE211E3FEB2000C7FCE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1AABA051F8EE8B400FFF36B /* Configuration.swift in Sources */,
-				C1AABA091F8EFFF200FFF36B /* Composer.swift in Sources */,
 				C1AABA071F8EF4A600FFF36B /* Router.swift in Sources */,
+				474267A91FA0558000D4C23A /* LogLevel.swift in Sources */,
+				474267AB1FA0579B00D4C23A /* BaseOutput.swift in Sources */,
 				C155AF851E404083008D321A /* Logger.swift in Sources */,
+				473FE0361FA10C8E00534BB1 /* ConsoleOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +461,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		474267A61FA0458900D4C23A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1F8EE251E3FEB2000C7FCE0 /* Juliet */;
+			targetProxy = 474267A51FA0458900D4C23A /* PBXContainerItemProxy */;
+		};
 		C1F8EE321E3FEB2100C7FCE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C1F8EE251E3FEB2000C7FCE0 /* Juliet */;
@@ -360,7 +473,74 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		474267971FA03AA300D4C23A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				474267981FA03AA300D4C23A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4742679C1FA03AA300D4C23A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4742679D1FA03AA300D4C23A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		474267A01FA03AA300D4C23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZ8449Y9W6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rougebit.Juliet.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		474267A11FA03AA300D4C23A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZ8449Y9W6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rougebit.Juliet.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C1F8EE381E3FEB2100C7FCE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -477,8 +657,10 @@
 			baseConfigurationReference = 41E577083218BA139EECE6A4 /* Pods-Juliet.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZ8449Y9W6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -498,8 +680,10 @@
 			baseConfigurationReference = 8422C47AF643C5E703D56B8A /* Pods-Juliet.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZ8449Y9W6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -540,6 +724,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		474267A21FA03AA300D4C23A /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				474267A01FA03AA300D4C23A /* Debug */,
+				474267A11FA03AA300D4C23A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C1F8EE201E3FEB2000C7FCE0 /* Build configuration list for PBXProject "Juliet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
